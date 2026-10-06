@@ -1,0 +1,91 @@
+{
+    "_items": [
+        {
+            "status": "UNKNOWN",
+            "contactId": "ee18bf83-20e0-44d0-8bf2-fda79ef84f04",
+            "profile": {
+                "nickname": "Veniam Pariatur",
+                "slug": "6ff94227-6fbe-4a5e-b80a-e3fcdf7cd2db65591",
+                "title": ""
+            },
+            "privacyStatus": "UNKNOWN",
+            "activityStatus": "UNKNOWN",
+            "_id": "ee18bf83-20e0-44d0-8bf2-fda79ef84f04",
+            "_createdDate": "2025-02-19T10:36:19.000Z",
+            "_updatedDate": "2025-02-19T10:36:19.284Z"
+        },
+        {
+            "status": "UNKNOWN",
+            "contactId": "bdd1a5d0-b335-48ac-8b8d-d5d1ad7d02e3",
+            "profile": {
+                "nickname": "Excepteur Id",
+                "slug": "excepteur-id",
+                "title": ""
+            },
+            "privacyStatus": "UNKNOWN",
+            "activityStatus": "UNKNOWN",
+            "_id": "05274170-f69c-4c2b-b6fa-9ebc30c7da79",
+            "_createdDate": "2019-08-21T21:12:32.000Z",
+            "_updatedDate": "2019-08-21T21:12:32.266Z"
+        },
+        {
+            "status": "UNKNOWN",
+            "contactId": "b339907c-18f0-4a8d-af55-30767ec46c96",
+            "profile": {
+                "nickname": "Odio",
+                "slug": "odio"
+            },
+            "privacyStatus": "UNKNOWN",
+            "activityStatus": "UNKNOWN",
+            "_id": "b339907c-18f0-4a8d-af55-30767ec46c96",
+            "_createdDate": "2024-07-24T13:48:16.000Z",
+            "_updatedDate": "2024-07-24T13:48:16.085Z"
+        },
+        {
+            "status": "UNKNOWN",
+            "contactId": "4de9f1c6-70ae-4205-8a8e-394cb57590b0",
+            "profile": {
+                "nickname": "Fugiat",
+                "slug": "fugiat",
+                "title": ""
+            },
+            "privacyStatus": "UNKNOWN",
+            "activityStatus": "UNKNOWN",
+            "_id": "4de9f1c6-70ae-4205-8a8e-394cb57590b0",
+            "_createdDate": "2019-08-22T08:06:35.000Z",
+            "_updatedDate": "2020-02-19T14:01:00.158Z"
+        },
+        {
+            "status": "UNKNOWN",
+            "contactId": "45f84a7f-aeff-45df-8543-421bac8db852",
+            "profile": {
+                "nickname": "Proident Commodo Ut",
+                "slug": "3674e897-15f6-40e0-b459-c286b2e566ce14661",
+                "title": ""
+            },
+            "privacyStatus": "UNKNOWN",
+            "activityStatus": "UNKNOWN",
+            "_id": "45f84a7f-aeff-45df-8543-421bac8db852",
+            "_createdDate": "2025-09-14T09:44:51.000Z",
+            "_updatedDate": "2025-09-14T09:44:51.429Z"
+        }
+    ],
+    "_originQuery": {
+        "filterTree": {
+            "$and": []
+        },
+        "invalidArguments": [],
+        "encoder": {},
+        "transformationPaths": {},
+        "sort": [],
+        "paging": {},
+        "pagingMethod": "OFFSET",
+        "builderOptions": {
+            "cursorWithEmptyFilterAndSort": true
+        }
+    },
+    "_limit": 50,
+    "_totalCount": 5,
+    "_offset": 0,
+    "_tooManyToCount": false
+}

@@ -1,0 +1,175 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Original project" id="o1">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="o1-1" value="&lt;b&gt;Wix Content Intelligence Pipeline (original project): local-first, one-time download&lt;/b&gt;" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=11;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="20" y="0" width="1200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-2" value="Source" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="50" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-3" value="Extraction" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="50" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-4" value="Transformation" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="50" width="310" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-5" value="Analysis" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="50" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-6" value="Presentation" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="50" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-7" value="Wix platform (nonprofit website)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=12;fontStyle=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="20" y="110" width="280" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-8" value="Velo backend" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=12;fontStyle=1;fillColor=#ffffff;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="35" y="145" width="250" height="245" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-9" value="&lt;b&gt;http-functions.js&lt;/b&gt;&lt;br&gt;REST endpoints for the data" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="50" y="180" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-10" value="&lt;b&gt;utils.web.js&lt;/b&gt;&lt;br&gt;validates the JWT&lt;br&gt;(secret in Wix Secrets Manager)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="50" y="250" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-11" value="&lt;b&gt;services.web.js&lt;/b&gt;&lt;br&gt;queries the collections" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="50" y="330" width="220" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-12" value="&lt;b&gt;Wix CMS content&lt;/b&gt;&lt;br&gt;blog posts, categories, tags,&lt;br&gt;members; events;&lt;br&gt;articles, article categories" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fontSize=11;fillColor=#ffffff;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="35" y="420" width="250" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-13" value="Laptop (Docker, docker-compose, Makefile)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=12;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="330" y="110" width="1250" height="650" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-14" value="&lt;b&gt;curl&lt;/b&gt; (HTTP GET) http://127.0.0.1:8000/events, ...&lt;br&gt;one call per endpoint, run once" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="350" y="145" width="280" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-15" value="jwt_microservice container" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=12;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="350" y="220" width="280" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-16" value="&lt;b&gt;FastAPI app&lt;/b&gt; (main.py)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="365" y="255" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-17" value="&lt;b&gt;routers/&lt;/b&gt;&lt;br&gt;events, blog_posts, blog_taxonomies,&lt;br&gt;collections, members" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="365" y="310" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-18" value="&lt;b&gt;jwt_generator.py&lt;/b&gt;&lt;br&gt;signs a JWT with WIX_AUTH_SECRET" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="365" y="385" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-19" value="&lt;b&gt;data_fetcher.py&lt;/b&gt;&lt;br&gt;calls Wix, saves the JSON" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="365" y="445" width="250" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-20" value="&lt;b&gt;.env&lt;/b&gt; (git-ignored)&lt;br&gt;WIX_AUTH_SECRET, ports,&lt;br&gt;JUPYTER_TOKEN" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="350" y="545" width="250" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-21" value="jupyter container (Jupyter Lab, Pandas)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=12;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="680" y="145" width="620" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-22" value="&lt;b&gt;utils/&lt;/b&gt;: data, chart and Docker helpers; shared chart theme" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="700" y="180" width="580" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-23" value="ETL/ notebooks" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=12;fontStyle=1;fillColor=#ffffff;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="700" y="230" width="280" height="275" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-24" value="&lt;b&gt;1&lt;/b&gt; articles: category lookup,&lt;br&gt;HTML cleaning" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="715" y="265" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-25" value="&lt;b&gt;2_1, 2_2&lt;/b&gt; blog posts:&lt;br&gt;categories, tags, then authors" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="715" y="320" width="250" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-26" value="&lt;b&gt;3_1 to 3_4&lt;/b&gt; events:&lt;br&gt;speakers and categories by text search,&lt;br&gt;manual exceptions" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="715" y="385" width="250" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-27" value="data_science/ notebooks" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=12;fontStyle=1;fillColor=#ffffff;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="230" width="280" height="275" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-28" value="&lt;b&gt;0&lt;/b&gt; content load:&lt;br&gt;reads the 3 processed files" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="265" width="250" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-29" value="&lt;b&gt;1 to 4&lt;/b&gt; engagement analysis:&lt;br&gt;all content, articles,&lt;br&gt;blog posts, events" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="1015" y="335" width="250" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-30" value="&lt;b&gt;data_raw/&lt;/b&gt;&lt;br&gt;7 wix_*.json&lt;br&gt;(git-ignored)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="690" y="600" width="140" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-31" value="&lt;b&gt;data_temp/&lt;/b&gt;&lt;br&gt;4 intermediate&lt;br&gt;files (git-ignored)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="850" y="600" width="140" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-32" value="&lt;b&gt;data_processed/&lt;/b&gt;&lt;br&gt;articles, blog_posts,&lt;br&gt;events .json&lt;br&gt;(git-ignored)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="600" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-33" value="Data folders, bind-mounted into the containers" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=11;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="690" y="718" width="520" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-34" value="&lt;b&gt;Charts&lt;/b&gt;&lt;br&gt;Matplotlib, saved as PNG" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="260" width="220" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-35" value="&lt;b&gt;presentation.md&lt;/b&gt;&lt;br&gt;Marp slides, exported to&lt;br&gt;presentation.pdf" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="365" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-36" value="&lt;b&gt;Committed instead&lt;/b&gt;&lt;br&gt;data_raw_dummy/, data_processed_dummy/:&lt;br&gt;mocked values, same schema" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="590" width="220" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-37" value="&lt;b&gt;pre-commit, nbstripout&lt;/b&gt;&lt;br&gt;notebooks committed without outputs" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="1340" y="680" width="220" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-38" value="Legend" style="rounded=1;whiteSpace=wrap;html=1;arcSize=3;verticalAlign=top;align=left;spacingLeft=10;spacingTop=4;fontSize=12;fontStyle=1;fillColor=#ffffff;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="20" y="590" width="280" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-39" value="Wix platform (external)" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="35" y="625" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-40" value="Docker container" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="165" y="625" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-41" value="Laptop" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="35" y="670" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-42" value="Committed to Git" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fontSize=11;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="165" y="670" width="120" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-43" value="&lt;b&gt;Solid arrow:&lt;/b&gt; data flow&lt;br&gt;&lt;b&gt;Dashed arrow:&lt;/b&gt; call or request" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="35" y="715" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-44" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.5;dashed=1;strokeColor=#666666;" edge="1" parent="1" source="o1-14" target="o1-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-45" value="request with JWT;&lt;br&gt;JSON response" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.5;dashed=1;strokeColor=#666666;exitX=0;exitY=0.5;entryX=1;entryY=0.5;startArrow=block;startFill=1;" edge="1" parent="1" source="o1-19" target="o1-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-46" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.5;dashed=1;strokeColor=#666666;" edge="1" parent="1" source="o1-9" target="o1-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.5;dashed=1;strokeColor=#666666;" edge="1" parent="1" source="o1-10" target="o1-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-48" value="query" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.5;dashed=1;strokeColor=#666666;" edge="1" parent="1" source="o1-11" target="o1-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-49" value="save wix_*.json" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.5;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="o1-19" target="o1-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-50" value="read" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.5;exitX=0.5;exitY=0;entryX=0.25;entryY=1;" edge="1" parent="1" source="o1-30" target="o1-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-51" value="intermediate&lt;br&gt;states" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.5;exitX=0.75;exitY=1;entryX=0.5;entryY=0;startArrow=block;startFill=1;" edge="1" parent="1" source="o1-23" target="o1-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-52" value="final JSON" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.5;exitX=0.92;exitY=1;entryX=0.3;entryY=0;" edge="1" parent="1" source="o1-23" target="o1-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-53" value="load" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.5;exitX=0.75;exitY=0;entryX=0.75;entryY=1;" edge="1" parent="1" source="o1-32" target="o1-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-54" value="savefig" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.5;exitX=1;exitY=0.25;entryX=0;entryY=0.5;" edge="1" parent="1" source="o1-27" target="o1-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="o1-55" value="slides" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;labelBackgroundColor=#ffffff;strokeWidth=1.5;" edge="1" parent="1" source="o1-34" target="o1-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
