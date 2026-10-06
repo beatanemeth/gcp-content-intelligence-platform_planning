@@ -4,7 +4,7 @@ Decision log for the "Requirements and open questions" section of [03_bea_answer
 
 **Status values:** _Agreed_ (confirmed by the maintainer), _Delegated_ (chosen by Claude at the maintainer's request).
 
-**Later changes:** the standalone module plan re-decides part of this file (project setup, APIs, CI) under Part A and Part B; see [08_claude_decision_overview.md](08_claude_decision_overview.md).
+**Later changes:** the standalone module plan re-decides part of this file (project setup, APIs, CI) under Part A and Part B; see [README.md](README.md).
 
 <br>
 
@@ -149,6 +149,6 @@ The maintainer handles this topic.
 
 - **`.gitignore`:** `*.tfstate*`, `.terraform/`, `*.tfvars` (except `*.tfvars.example`), `data/raw/`, the function's generated zip, `.venv/`, `__pycache__/`, `.env`.
 - **Commit:** `.terraform.lock.hcl` (pins provider versions), the JSON schema files, the `.sql` files, the dummy data.
-- **Dummy data:** as defined in the [glossary](08_claude_decision_overview.md#data-glossary). Edge cases are covered, except posts without tags (D3.5).
+- **Dummy data:** as defined in the [glossary](README.md#data-glossary). Edge cases are covered, except posts without tags (D3.5).
 - **GitHub push protection:** free for public repositories; blocks pushes that contain recognised secrets.
 - **Looker Studio (if built):** the report stays private; the README shows screenshots.
