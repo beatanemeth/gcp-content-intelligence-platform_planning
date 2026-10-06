@@ -1,0 +1,64 @@
+{
+    "currentPage": 0,
+    "items": [
+        {
+            "_id": "ba882b90-d307-4807-a6a7-f7cca568bd63",
+            "_owner": "ec361519-890c-4eb8-9672-8732e92a7b01",
+            "_createdDate": "2025-05-15T09:45:38.828Z",
+            "text": "Est varius labore ante laboris id proin commodo. Minim tortor tortor orci labore ad voluptate ut diam sit voluptate.",
+            "_updatedDate": "2025-11-20T16:55:41.047Z",
+            "title": "Elementum labore sit aute"
+        },
+        {
+            "_id": "93300cdd-23f3-4e09-8176-f9fbf875aee7",
+            "_owner": "ec361519-890c-4eb8-9672-8732e92a7b01",
+            "_createdDate": "2025-05-15T09:45:21.003Z",
+            "text": "Non orci exercitation do suspendisse euismod cras ea ut proin reprehenderit congue. Ante consectetur nulla nec qui massa sint. Odio maecenas fugiat ipsum.",
+            "_updatedDate": "2025-11-20T16:55:41.047Z",
+            "title": "Ea nisi magna ut"
+        },
+        {
+            "_id": "ff18b949-6758-4936-a94d-ad25feaf4a20",
+            "_owner": "ec361519-890c-4eb8-9672-8732e92a7b01",
+            "_createdDate": "2025-05-15T09:44:36.367Z",
+            "text": "Vivamus ut officia excepteur elementum anim porttitor enim officia veniam vestibulum ligula. Dignissim nec laborum id officia suspendisse duis esse ea.",
+            "_updatedDate": "2025-11-20T16:55:41.047Z",
+            "title": "Semper praesent tempor"
+        },
+        {
+            "_id": "24735bc8-9939-4f86-b9f9-aea274c79fa5",
+            "_owner": "ec361519-890c-4eb8-9672-8732e92a7b01",
+            "_createdDate": "2025-05-15T09:44:18.307Z",
+            "text": "Aute mollit ea id ante dignissim varius. Fugiat sit lacinia esse quis vivamus laboris pariatur consequat fugiat aute lectus. Cursus ipsum vestibulum nostrud.",
+            "_updatedDate": "2025-11-20T16:55:41.047Z",
+            "title": "Suspendisse qui amet sit"
+        },
+        {
+            "_id": "8d7e5157-939b-42c6-be01-3d11a83b49d7",
+            "_owner": "ec361519-890c-4eb8-9672-8732e92a7b01",
+            "_createdDate": "2025-05-15T09:43:43.782Z",
+            "text": "Ex nonummy sunt vivamus cursus ex euismod. Maecenas orci vivamus mollit dolor tempor in nisi proident euismod ea voluptate massa.",
+            "_updatedDate": "2025-11-20T16:55:41.047Z",
+            "title": "Tempor laboris aliquip"
+        }
+    ],
+    "length": 5,
+    "partialIncludes": false,
+    "query": {
+        "invalidArguments": [],
+        "filterTree": {},
+        "encoder": {},
+        "validateCollectionName": true,
+        "provider": {
+            "cloudDataUrl": "",
+            "gridAppId": "5901c2b1-fb2e-4e4e-a5d6-ad0a0bc87ffa",
+            "environment": "LIVE"
+        },
+        "collectionName": "KnowledgeBase-CategoryDescriptions",
+        "skipNumber": 0,
+        "included": [],
+        "projectedFields": []
+    },
+    "totalCount": 5,
+    "totalPages": 1
+}
