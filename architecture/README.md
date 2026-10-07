@@ -1,5 +1,7 @@
 # Content pipeline: planning summary
 
+> **Reviewed:** the [plan review](../review_plan/README.md) corrects this plan step by step. Where they differ, `review_plan/` wins.
+
 ## The story
 
 This Terraform setup is a new feature in an "existing infrastructure": a standalone Terraform module.

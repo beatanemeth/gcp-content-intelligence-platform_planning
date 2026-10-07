@@ -1,5 +1,7 @@
 # Planning roadmap
 
+> **Reviewed:** the [plan review](../review_plan/README.md) corrects this plan step by step. Where they differ, `review_plan/` wins.
+
 Step-by-step plan for the final Terraform and GCP setup. Starting point: the brainstorming decisions in [brainstorming/README.md](../brainstorming/README.md).
 
 **Status values:** _Agreed_ (confirmed by the maintainer), _Delegated_ (chosen by Claude at the maintainer's request).
