@@ -18,11 +18,13 @@ The new project keeps the data structure but changes the focus:
 
 ## Planning flow
 
-The plan has two stages. The second stage builds on the first. Each stage ends in a README that summarises its results.
+The plan has three stages. Each stage builds on the one before. Each stage ends in a README that summarises its results.
 
 1. **[brainstorming/](brainstorming/):** the first discussion with Claude Code.
    - **[brainstorming/README.md](brainstorming/README.md):** all brainstorming decisions in one place.
 2. **[architecture/](architecture/):** the plan for the standalone Terraform module.
    - **[architecture/README.md](architecture/README.md):** a summary of the module plan.
+3. **[review_plan/](review_plan/):** the review of each architecture step, with refinements and the final implementation details.
+   - **[review_plan/README.md](review_plan/README.md):** an index of the reviewed steps.
 
 **Supporting folders:** `assets/` (diagrams), `dummy_data_blogs/` and `dummy_data_articles/` (the dummy dataset).
