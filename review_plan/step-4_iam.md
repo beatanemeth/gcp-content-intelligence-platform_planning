@@ -20,13 +20,15 @@ Three jobs in the pipeline are done by machines, not by people. Each job gets it
 
 | Robot account     | Its job                                        | Doors its badge opens                                                    |
 | ----------------- | ---------------------------------------------- | ------------------------------------------------------------------------ |
-| `content-build`   | **The builder:** turns the zip into a running program | Read the code; store the built program; write build logs          |
+| `content-build`   | **The builder:** turns the zip into a running program | Read the code (code boxes only); store the built program; write build logs |
 | `content-trigger` | **The messenger:** delivers "a new file arrived" to the function | Receive the messages; call the function                    |
 | `content-runtime` | **The worker:** runs the Python code           | Read and write files in the data box; fill the staging tables; start loads in BigQuery |
 
 **Why three robots, not one:** if one robot did everything, one stolen badge would open every door. With three, each badge opens only what its job needs. This is called **least privilege**.
 
-**What no robot can do:** touch the cleaned or analysis rooms in BigQuery, delete datasets, or change anything of Team A.
+**What no robot can do:** touch the cleaned or analysis rooms in BigQuery, read Terraform's notes (the state bucket), delete datasets, or change anything of Team A.
+
+**The builder's badge has a condition:** it may read files only in the boxes that hold code (Google's own code boxes and the pipeline's code box). It cannot read the data box or Terraform's notes.
 
 **No keys:** a robot never gets a password file. Google gives it a short-lived pass each time it works. Nothing secret can leak from the repository.
 
@@ -53,13 +55,14 @@ Three jobs in the pipeline are done by machines, not by people. Each job gets it
 
 ### Refinement
 
-M: accepted. G's new reason (step 3.1): accepted.
+M: accepted, then narrowed by M2 after the external review of the plan. G (step 3.1): its least-privilege reason holds again with M2.
 
 | ID  | Finding | Proposal |
 | --- | ------- | -------- |
 | M   | **The build account's file access is probably too narrow.** The plan grants `roles/storage.objectViewer` on the source bucket only. Google's current guide for a custom build service account lists 3 roles, all granted on the **project**. It names Google's own buckets (`gcf-v2-sources-*`, `gcf-v2-uploads-*`): Google appears to copy the code there before the build. Those buckets are created by Google on the first deploy, so they cannot be targeted in advance. With the bucket-level grant, the first deploy may fail on a permission error. | Grant `roles/storage.objectViewer` on the project, as Google's guide says. The total stays 8 grants. |
+| M2  | **M opens every bucket to the builder, including Terraform's state bucket.** The state file is the most sensitive file of the project, and a project-wide read does not fit the least-privilege story. Google's guide shows an IAM condition that limits the grant to Google's own code buckets. | Keep the project-level grant, with Google's condition, extended by the pipeline's source bucket. The builder reads only code. The total stays 8 grants. |
 
-**Effect on G (step 3.1):** with M, the build account can read every bucket in the project, including the data bucket. The 2 buckets stay; G's reason changes. The runtime account, which can **write**, reaches only the data bucket and cannot touch the code. Code and data also keep separate lifecycles.
+**Effect on G (step 3.1):** with M2, the build account reads only code buckets, never the data bucket. G's least-privilege reason holds: the build account reaches only code, the runtime account only data.
 
 <br>
 
@@ -84,7 +87,7 @@ M: accepted. G's new reason (step 3.1): accepted.
 | `content-runtime` | `roles/bigquery.jobUser`        | Project                         | `google_project_iam_member`              |
 | `content-trigger` | `roles/run.invoker`             | The function's Cloud Run service | `google_cloud_run_v2_service_iam_member` |
 | `content-trigger` | `roles/eventarc.eventReceiver`  | Project                         | `google_project_iam_member`              |
-| `content-build`   | `roles/storage.objectViewer`    | **Project** (M)                 | `google_project_iam_member`              |
+| `content-build`   | `roles/storage.objectViewer`    | **Project, with a condition: code buckets only** (M, M2) | `google_project_iam_member` with a `condition` block |
 | `content-build`   | `roles/artifactregistry.writer` | Project                         | `google_project_iam_member`              |
 | `content-build`   | `roles/logging.logWriter`       | Project                         | `google_project_iam_member`              |
 
@@ -95,8 +98,29 @@ M: accepted. G's new reason (step 3.1): accepted.
   - `run.invoker`: call the function (a Cloud Run function runs as a Cloud Run service).
   - `eventReceiver`: receive events from Eventarc.
   - The 3 build roles: Google's guide for a custom build service account.
-- **Project-level grants:** 5 (with M). They add to Team A's project; they remove nothing (S4.3).
+- **Project-level grants:** 5 (with M); the build account's `objectViewer` grant carries a condition (M2). They add to Team A's project; they remove nothing (S4.3).
 - **The `run.invoker` grant** targets the service that the function creates, so it is created after the function (S5.5).
+
+#### The condition on the build account's grant (M2)
+
+From Google's guide for a custom build service account, extended by the pipeline's source bucket:
+
+```hcl
+condition {
+  title       = "content-build-code-buckets-only"
+  description = "Read function code only: Google's code buckets and the content source bucket (M2)"
+  expression  = <<-EOT
+    resource.type == "storage.googleapis.com/Object" &&
+    (resource.name.startsWith("projects/_/buckets/gcf-v2-sources-") ||
+     resource.name.startsWith("projects/_/buckets/gcf-v2-uploads-") ||
+     resource.name.startsWith("projects/_/buckets/run-sources-") ||
+     resource.name.startsWith("projects/_/buckets/${google_storage_bucket.source.name}/"))
+  EOT
+}
+```
+
+- **Out of reach:** the data bucket and Team A's state bucket.
+- **The trailing `/` on the source bucket:** the condition matches that bucket only, not another bucket whose name starts the same way.
 
 #### Not needed
 
@@ -113,7 +137,7 @@ M: accepted. G's new reason (step 3.1): accepted.
 
 ### Check at implementation
 
-- **M:** whether the bucket-level grant on the source bucket alone is enough. If Google's guide still lists project level, keep M.
+- **M2:** that the first deploy succeeds with the condition. If the build fails on reading the code, the build log names the bucket it tried; check its prefix against the condition.
 
 <br>
 
@@ -131,6 +155,9 @@ Least privilege and keyless service accounts are core topics of the Professional
 **Considered: one robot instead of three.** It would be 2 resources fewer, but one badge would open every door, and the project would show nothing about least privilege. Keep three.
 
 **M. The builder's badge is probably too small (accepted).** The plan lets the builder read only the code box. Google's current guide says the builder must read files across the whole project, because Google first copies the code into its own boxes. Those boxes do not exist until the first deploy, so the plan cannot point at them.
-→ Follow Google's guide: the builder may read files in the whole project. Otherwise the first deploy may fail.
+→ Follow Google's guide: the builder may read files across the project. Otherwise the first deploy may fail.
 
-**Effect on G (step 3.1):** the builder can then also read the data box, so G's reason must change. Two boxes still make sense: the worker, which can **write**, reaches only the data box and cannot touch the code.
+**M2. But not every file (accepted, after the external review).** M alone would let the builder read every box, including Terraform's notes, the most sensitive file of the project. Google's guide also shows how to narrow it: a **condition** on the badge, "only boxes whose names start with Google's code prefixes".
+→ The builder reads only code: Google's code boxes and the pipeline's code box. The data box and Terraform's notes stay out of reach.
+
+**Effect on G (step 3.1):** with M2, the builder reads only code and the worker only data, so G's least-privilege reason holds.

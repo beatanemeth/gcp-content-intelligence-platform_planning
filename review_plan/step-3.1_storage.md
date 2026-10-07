@@ -93,7 +93,7 @@ Source: the data glossary in the [brainstorming README](../brainstorming/README.
 
 | ID  | Decision | Why |
 | --- | -------- | --- |
-| G   | **2 buckets: the runtime account cannot touch the code, and code and data keep separate lifecycles.** The runtime account, which can write, reaches only the data bucket. Data is uploaded and replaced; code changes only on deploy. | The plan's earlier reason ("a zip in the data bucket would fire the trigger on every deploy") is weak: the function ignores every file except `_READY`. The first review reason ("the build account reads only the source bucket") no longer holds after M (step 4): the build account reads every bucket in the project. |
+| G   | **2 buckets, for least privilege and separate lifecycles.** The build account reads only code buckets (step 4, M2); the runtime account, which can write, reaches only the data bucket. Data is uploaded and replaced; code changes only on deploy. | The plan's earlier reason ("a zip in the data bucket would fire the trigger on every deploy") is weak: the function ignores every file except `_READY`. |
 
 <br>
 
@@ -152,9 +152,8 @@ One zip file per code version: `function-source-<md5 of zip>.zip` (part 2, the f
 - **Reload without Python:** the processed files stay too, so BigQuery can be reloaded without running Python again.
 - **One name through every layer:** `blog_posts.json`, then `blog_posts.ndjson`, then the table `blog_posts`.
 
-**Correction G (decided, reason updated in step 4):** the design is right, but its reason was weak. The plan said the code zip needs its own box because otherwise "every deploy would wake the function". That is not a real problem: the function ignores every file except `_READY` and stops at once. The real reasons:
+**Correction G (decided; reason confirmed by M2 in step 4):** the design is right, but its reason was weak. The plan said the code zip needs its own box because otherwise "every deploy would wake the function". That is not a real problem: the function ignores every file except `_READY` and stops at once. The real reasons:
 
 - **The worker cannot touch the code:** the account that runs the function can **write**, and it reaches only the data box.
 - **Code and data have different lives:** the data is uploaded and replaced; the code changes only on deploy.
-
-The builder is not part of the reason: Google's guide lets it read every box in the project (step 4, M).
+- **The builder reads only code:** a condition on its badge limits it to code boxes (step 4, M2), so it cannot read the data.

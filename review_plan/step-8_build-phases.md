@@ -133,7 +133,7 @@ T and U: accepted.
 | Item     | Content                                                                     |
 | -------- | --------------------------------------------------------------------------- |
 | Branch   | `feat/function-and-trigger`                                                  |
-| Files    | `iam.tf` (3 accounts, 8 grants, M); `function.tf` (zip, upload, function, `depends_on`); `main.py` gains the event entry point `handle_event` (15-minute limit H, count check I); `outputs.tf` gains `function_name` (U); `scripts/upload_data.sh` (data folder as argument, default `data/dummy`) |
+| Files    | `iam.tf` (3 accounts, 8 grants, M with the condition M2); `function.tf` (zip, upload, function, `depends_on`); `main.py` gains the event entry point `handle_event` (15-minute limit H, count check I); `outputs.tf` gains `function_name` (U); `scripts/upload_data.sh` (data folder as argument, default `data/dummy`) |
 | First `apply` | On a permission error, run `apply` again (S5.3)                         |
 | Done when | Logs: 2 working runs, 12 that end at once; `processed/` holds 6 files; `data_checks.sql` as in phase 4; no count `ERROR` in the logs; a second upload gives the same counts |
 

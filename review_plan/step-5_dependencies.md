@@ -60,7 +60,7 @@ These hints are called `depends_on`. They are used only in these two places.
 
 None. The step is consistent with the decisions of steps 1 to 4:
 
-- **M (step 4):** the build account's `objectViewer` grant moves to the project; it stays in the function's `depends_on`.
+- **M and M2 (step 4):** the build account's `objectViewer` grant moves to the project, with a condition; it stays in the function's `depends_on`.
 - **K (step 3.3):** this step already says `deletion_protection = false` for tables **and** views.
 - **H (step 3.2):** the 15-minute age limit does not change any order.
 
