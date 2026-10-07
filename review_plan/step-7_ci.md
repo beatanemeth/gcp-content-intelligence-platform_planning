@@ -148,6 +148,7 @@ Answer to the maintainer's question.
 - **Versions:** each hook repository pinned with `rev`; updated with `pre-commit autoupdate`.
 - **Set-up once per laptop:** `pip install -r requirements-dev.txt`, then `pre-commit install`. From then on, `git commit` runs the hooks.
 - **Terraform hooks need Terraform and TFLint installed on the laptop.**
+- **`terraform_tflint` and the root `.tflint.hcl`:** the hook checks folder by folder, so it gets the same full path: `args: ["--args=--config=__GIT_WORKING_DIR__/.tflint.hcl"]`.
 
 #### All workflows
 
@@ -168,10 +169,11 @@ Answer to the maintainer's question.
 
 | Paths                                           | Steps                                                                                     |
 | ----------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `terraform/**`, `.tflint.hcl`, the workflow file | Checkout; install Terraform (pinned); `terraform fmt -check -recursive`; in `terraform/deployment/`: `terraform init -backend=false`, `terraform validate`; install TFLint (pinned); `tflint --init` (with `GITHUB_TOKEN`); `tflint --recursive` |
+| `terraform/**`, `.tflint.hcl`, the workflow file | Checkout; install Terraform (pinned); `terraform fmt -check -recursive`; in `terraform/deployment/`: `terraform init -backend=false`, `terraform validate`; install TFLint (pinned); `tflint --init` (with `GITHUB_TOKEN`); `tflint --recursive --config "$(pwd)/.tflint.hcl"` |
 
 - **`init -backend=false`:** loads the providers and the module, skips the state bucket, so no login is needed.
 - **One `validate` checks both folders:** the deployment calls the module.
+- **`--config` with a full path:** with `--recursive`, TFLint looks for `.tflint.hcl` in each folder it checks, not in the repository root. A full path makes every folder use the root file (TFLint user guide).
 
 #### `.tflint.hcl` (phase 2)
 
@@ -195,7 +197,7 @@ Answer to the maintainer's question.
 | Format           | `terraform fmt -check -recursive`                    | Repository root         |
 | Initialise       | `terraform init -backend=false`                      | `terraform/deployment/` |
 | Validate         | `terraform validate`                                 | `terraform/deployment/` |
-| Lint             | `tflint --init`, then `tflint --recursive`           | Repository root         |
+| Lint             | `tflint --init`, then `tflint --recursive --config "$(pwd)/.tflint.hcl"` | Repository root |
 | Python tests     | `pytest`                                             | Repository root         |
 
 #### Done when
@@ -210,6 +212,7 @@ Answer to the maintainer's question.
 
 - **P:** that ShellCheck is still preinstalled on `ubuntu-latest`; if not, install it with `apt-get` in the workflow.
 - **S:** whether the `terraform_validate` hook runs `terraform init` by itself, or needs `init` run once by hand.
+- **TFLint:** that the `__GIT_WORKING_DIR__` placeholder still works in the `terraform_tflint` hook; that `tflint --recursive --config` really reports the root file's rules in both the module and the deployment folder.
 
 <br>
 
