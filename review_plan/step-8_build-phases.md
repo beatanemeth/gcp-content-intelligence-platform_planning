@@ -105,7 +105,7 @@ T and U: accepted.
 | Item     | Content                                                                     |
 | -------- | --------------------------------------------------------------------------- |
 | Branch   | `feat/python-transformation`                                                 |
-| Files    | `function/main.py` (pure functions: unwrap, clean HTML, write NDJSON; command-line entry, T); `function/requirements.txt`; `tests/function/test_main.py`; `pyproject.toml`; `requirements-dev.txt` (N); `.github/workflows/python-tests.yml` (Q, R) |
+| Files    | `function/main.py` (pure functions: unwrap with the source total check (I), clean HTML, write NDJSON; command-line entry, T); `function/requirements.txt`; `tests/function/test_main.py`; `pyproject.toml`; `requirements-dev.txt` (N); `.github/workflows/python-tests.yml` (Q, R) |
 | Done when | pytest green; Ruff green; `python main.py data/dummy .build/ndjson` writes 6 files with the record counts below |
 
 **Record counts:**
@@ -133,9 +133,9 @@ T and U: accepted.
 | Item     | Content                                                                     |
 | -------- | --------------------------------------------------------------------------- |
 | Branch   | `feat/function-and-trigger`                                                  |
-| Files    | `iam.tf` (3 accounts, 8 grants, M with the condition M2); `function.tf` (zip, upload, function, `depends_on`); `main.py` gains the event entry point `handle_event` (15-minute limit H, count check I); `outputs.tf` gains `function_name` (U); `scripts/upload_data.sh` (data folder as argument, default `data/dummy`) |
+| Files    | `iam.tf` (3 accounts, 8 grants, M with the condition M2); `function.tf` (zip, upload, function, `depends_on`); `main.py` gains the event entry point `handle_event` (15-minute limit H); `outputs.tf` gains `function_name` (U); `scripts/upload_data.sh` (data folder as argument, default `data/dummy`) |
 | First `apply` | On a permission error, run `apply` again (S5.3)                         |
-| Done when | Logs: 2 working runs, 12 that end at once; `processed/` holds 6 files; `data_checks.sql` as in phase 4; no count `ERROR` in the logs; a second upload gives the same counts |
+| Done when | Logs: 2 working runs, 12 that end at once; `processed/` holds 6 files; `data_checks.sql` as in phase 4; no source total `ERROR` in the logs (I); a second upload gives the same counts |
 
 #### Phase 6: cleaned views
 
@@ -161,9 +161,10 @@ No branch, unless a fix is needed. The maintainer runs:
 2. `terraform apply`
 3. `scripts/upload_data.sh data/raw`
 4. `bq query --use_legacy_sql=false < scripts/data_checks.sql`: counts match the full dataset column above; 0 for every other check.
-5. **D3.5 check:** the 2 posts without tags still appear in the cleaned views and in `content`.
-6. **Save the results** of the 6 analysis views for the README (S8.8).
-7. `terraform destroy`
+5. **Source total check (I):** no `ERROR` in the logs. Before this phase, the maintainer corrects the full dataset's `members.json`: it holds 8 records but states `_totalCount: 9`.
+6. **D3.5 check:** the 2 posts without tags still appear in the cleaned views and in `content`.
+7. **Save the results** of the 6 analysis views for the README (S8.8).
+8. `terraform destroy`
 
 #### Phase 9: README and docs
 

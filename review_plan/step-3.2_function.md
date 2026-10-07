@@ -36,7 +36,7 @@ The last 6 come from the function itself: saving its own results is also "a new 
 **What it does with a complete folder:**
 
 1. **Reads** each raw file of the folder (`raw/blogs/` or `raw/articles/`).
-2. **Cleans** it: removes the wrapping, removes the HTML from article texts, writes one record per line.
+2. **Cleans** it: removes the wrapping, removes the HTML from article texts, writes one record per line. Where the export states its own total, it **checks** that the number of records matches it.
 3. **Saves** the result on the `processed/` shelf.
 4. **Loads** each processed file into its staging table in BigQuery, replacing the old content.
 5. **Writes a short report** to the logs: how many records it wrote and how many rows BigQuery loaded.
@@ -89,12 +89,12 @@ The last 6 come from the function itself: saving its own results is also "a new 
 
 ### Refinements
 
-H and I: accepted.
+H and I: accepted. I was revised after the external review of the plan: the check now compares with the export's own total.
 
 | ID  | Finding | Proposal |
 | --- | ------- | -------- |
 | H   | **A permanent failure is retried for days.** The trigger retries failed events (`RETRY_POLICY_RETRY`), which the plan needs: with at most 2 instances, some events are rejected and must come back. But a permanent error is retried too. Example: a field the strict staging schema does not know makes the load fail on every attempt. Google's default retry window is 7 days, and every retry runs the whole group again. Google's retry guide recommends an end condition: ignore events older than a set age. | Ignore events older than 15 minutes: log a warning and stop. A temporary problem is solved by a retry within 15 minutes; a permanent one stops after 15 minutes and stays visible in the logs. |
-| I   | **The report in the logs is only text.** The plan says "log the record and row counts". Nothing compares them. | Log one line per file as JSON with a `severity` field (Cloud Logging reads it), and log it as `ERROR` when the records written and the rows loaded differ. A simple data quality check inside the pipeline. |
+| I   | **The pipeline does not check that an export is complete.** The plan only logs the record and row counts. Comparing records written with rows loaded would mostly test the code against itself: with strict loading, BigQuery either loads every row or fails. The exports carry their own totals (`_totalCount` in `members`, `totalCount` in `articles` and `article_categories`), and `members` was exported with `_limit: 50`, so a cut-off export is a real risk. | Compare the number of records in each wrapped export with its own total, and log an `ERROR` when they differ. The 3 blog files are plain lists without a total; the row counts in `data_checks.sql` cover them. Log one JSON line per file with a `severity` field, so Cloud Logging can filter on it. |
 
 <br>
 
@@ -141,11 +141,23 @@ H and I: accepted.
 | 1   | Check the event          | Object name not ending in `/_READY`: return. Event older than 15 minutes (H): log a warning, return |
 | 2   | Find the group           | The folder name: `raw/blogs/_READY` gives `blogs`                                      |
 | 3   | For each file of the group | Read `raw/<group>/<file>.json`                                                       |
-| 4   | Unwrap                   | `_items` or `items` envelope: take the list; plain list: keep it                       |
+| 4   | Unwrap and check         | `_items` or `items` envelope: take the list; plain list: keep it. Envelope with a total: compare it with the number of records; `ERROR` if they differ (I) |
 | 5   | Clean HTML               | Articles only: `articleText` to plain text                                             |
 | 6   | Write NDJSON             | `processed/<group>/<file>.ndjson`, one record per line, overwriting                    |
 | 7   | Load                     | Load job into `content_staging.<file>`: NDJSON, `WRITE_TRUNCATE`, the table's own schema, no bad records allowed, no unknown fields allowed (D3.9) |
-| 8   | Report                   | One JSON log line per file: records written, rows loaded; `ERROR` if they differ (I)   |
+| 8   | Report                   | One JSON log line per file: records written, rows loaded                               |
+
+**The source total check (I):**
+
+| File                 | Total field   | Other envelope fields                       |
+| -------------------- | ------------- | ------------------------------------------- |
+| `members`            | `_totalCount` | `_limit: 50`, `_offset`, `_tooManyToCount`  |
+| `articles`           | `totalCount`  | `length`, `totalPages`                      |
+| `article_categories` | `totalCount`  | `length`, `totalPages`                      |
+| 3 blog files         | None          | Plain lists; no envelope                    |
+
+- **On a mismatch:** log an `ERROR` naming the file, the records found and the total stated; the group is still loaded. Stopping would only trigger retries (H) that cannot fix the source.
+- **Pure function:** part of the unwrap step, tested with pytest in phase 3, including a test with a cut-off export.
 
 **Groups (fixed in the code):**
 
@@ -170,7 +182,7 @@ Versions pinned at implementation.
 
 #### Done when
 
-- **Phase 3:** pytest passes; 6 NDJSON files written locally, with the same record count as their source files.
+- **Phase 3:** pytest passes, including a test with a cut-off export (I); 6 NDJSON files written locally, with the same record count as their source files.
 - **Phase 5:** after an upload, the logs show 2 working runs; `processed/` holds 6 files; a second upload gives the same counts.
 
 <br>
@@ -200,5 +212,5 @@ Not in the plan before; proposed here:
 **H. A permanent failure would be retried for 7 days (accepted).** When the function fails, Google sends the message again. The plan needs this: when 2 copies are busy, extra messages are turned away and must come back later. But some failures never go away. For example, a file with a field the staging table does not know fails the load every time. Google keeps retrying for up to 7 days, and each attempt redoes the whole folder.
 → The function ignores messages older than 15 minutes. A temporary problem is solved by a retry within 15 minutes; a permanent one stops and stays visible in the logs. Google's retry guide recommends this pattern.
 
-**I. The report in the logs checks nothing (accepted).** The plan says the function "logs the record and row counts", but nothing compares the two numbers.
-→ The function compares "records written" with "rows BigQuery loaded" for each file, and logs an error if they differ: a simple data quality check built into the pipeline. The log lines use a format Cloud Logging can filter on.
+**I. Is the export complete? (accepted; revised after the external review)** The plan only logs the counts. Comparing "records written" with "rows loaded" would mostly test our own code: with strict loading, BigQuery loads every row or fails.
+→ The exports state their own total: `members` says how many members exist (`_totalCount`), and the articles files say it too (`totalCount`). The function compares the records it finds with that total and logs an error if they differ. `members` was exported with a limit of 50 per page, so a cut-off export is a real risk. This tests the **data**, not the code: a classic Data Engineering check.
