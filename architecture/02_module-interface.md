@@ -1,5 +1,7 @@
 # Step 2: module interface
 
+> **Reviewed:** [step-2_module-interface.md](../review_plan/step-2_module-interface.md) corrects this step. Where they differ, the review wins.
+
 Decision log for step 2 of [00_roadmap.md](00_roadmap.md). Builds on [01_platform-contract.md](01_platform-contract.md).
 
 **Status values:** as in [00_roadmap.md](00_roadmap.md).

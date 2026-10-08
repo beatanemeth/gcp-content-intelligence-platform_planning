@@ -1,5 +1,7 @@
 # Step 6: repository layout
 
+> **Reviewed:** [step-6_repository-layout.md](../review_plan/step-6_repository-layout.md) corrects this step. Where they differ, the review wins.
+
 Decision log for step 6 of [00_roadmap.md](00_roadmap.md). Builds on [02_module-interface.md](02_module-interface.md) and [03_resource-inventory.md](03_resource-inventory.md).
 
 **Status values:** as in [00_roadmap.md](00_roadmap.md).

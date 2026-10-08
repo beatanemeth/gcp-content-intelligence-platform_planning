@@ -18,13 +18,14 @@ Imagine a company that already runs a GCP platform. This project adds a **new fe
 The story has two acts:
 
 - **Part A: the _platform_.**
-  - The shared foundation, applied once and kept.
+  - Owned by **Team A** (the platform team); created once and kept.
   - It holds everything that more than one feature uses.
-  - Part A stays **_imaginary_**: it is not built now, but may be built later.
+  - In the story, Team A built it with Terraform. This project does not build it: a stand-in script (`bootstrap/bootstrap.sh`) creates its elements for the demo.
   - Its only job is to tell Part B what it can assume already exists.
   - Keep it **_minimal_**: assume only the basics Part B needs, so Part B stays simple too.
 - **Part B: the _feature_.**
-  - The content **pipeline** as a standalone module, added to Part A without changing it.
+  - Owned by **Team B**. The maintainer is Team B only.
+  - The content **pipeline** as a standalone module, added without changing Part A's code or removing anything from it; it only adds permissions for its own service accounts.
   - It holds everything that only the pipeline uses.
 
 <br>
@@ -34,6 +35,6 @@ The story has two acts:
 - **Focus:** _Data Engineering_.
 - **Practice:** puts Google Professional Data Engineer knowledge into practice with _Terraform_ on _GCP_.
 - **SQL:** the transformations and data quality checks.
-- **CI:** a _GitHub Actions_ workflow runs TFLint.
+- **CI:** pre-commit on the laptop; _GitHub Actions_ workflows run ShellCheck, Terraform checks (`fmt`, `validate`, TFLint) and Python checks (pytest, Ruff).
 - **Scope:** simple but _production-minded_; the maintainer can explain every part.
 - **Method:** planned step by step.
