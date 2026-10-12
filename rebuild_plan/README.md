@@ -4,6 +4,8 @@ A step-by-step plan to build the content pipeline again, in a new repository. It
 
 The plan is self-contained: it needs no other file in this repository.
 
+> **Authorship note:** Plan and decisions are mine. Claude Code helped with research and wording.
+
 <br>
 
 ## The project in short
@@ -33,16 +35,16 @@ The plan is self-contained: it needs no other file in this repository.
 
 ## The steps
 
-| Step | File                                                               | What it builds                                                 |
-| ---- | ------------------------------------------------------------------ | -------------------------------------------------------------- |
-| 0    | [step-0_overview.md](step-0_overview.md)                           | Nothing: the story, the layout, the tools                      |
-| 1    | [step-1_repository.md](step-1_repository.md)                       | The repository, dummy data, pre-commit, `progress.md`          |
-| 2    | [step-2_terraform-skeleton.md](step-2_terraform-skeleton.md)       | The Terraform module and root module; the 2 buckets            |
-| 3    | [step-3_python-cleaning.md](step-3_python-cleaning.md)             | The Python cleaning, tested on the laptop                      |
-| 4    | [step-4_bigquery-staging.md](step-4_bigquery-staging.md)           | BigQuery datasets, staging tables, data checks                 |
-| 5a   | [step-5a_service-accounts.md](step-5a_service-accounts.md)         | 3 service accounts and their permissions                       |
-| 5b   | [step-5b_function-and-trigger.md](step-5b_function-and-trigger.md) | The function, its trigger, the upload script                   |
-| 6    | [step-6_cleaned-views.md](step-6_cleaned-views.md)                 | 3 cleaned views                                                |
-| 7    | [step-7_analysis-views.md](step-7_analysis-views.md)               | 4 analysis views, one per question                             |
-| 8    | [step-8_full-dataset.md](step-8_full-dataset.md)                   | The whole chain on the real exports; the results in the README |
-| 9    | [step-9_real-deployment.md](step-9_real-deployment.md)             | The runbook now; the real deployment                           |
+| Step | File                                                               | What it builds                                                                                                             |
+| ---- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| 0    | [step-0_overview.md](step-0_overview.md)                           | Nothing: the story, the layout, the tools                                                                                  |
+| 1    | [step-1_repository.md](step-1_repository.md)                       | The repository, dummy data, pre-commit, `progress.md`                                                                      |
+| 2    | [step-2_terraform-skeleton.md](step-2_terraform-skeleton.md)       | The Terraform module and root module; the 2 buckets (data and source)                                                      |
+| 3    | [step-3_python-cleaning.md](step-3_python-cleaning.md)             | The Python cleaning (unwrap, clean HTML), tested on the laptop                                                             |
+| 4    | [step-4_bigquery-staging.md](step-4_bigquery-staging.md)           | 3 datasets (`content_staging`, `content_cleaned`, `content_analysis`), 6 staging tables, data checks (`data_checks.sql`)   |
+| 5a   | [step-5a_service-accounts.md](step-5a_service-accounts.md)         | 3 service accounts (`content-build`, `content-trigger`, `content-runtime`); 7 of the 8 grants                              |
+| 5b   | [step-5b_function-and-trigger.md](step-5b_function-and-trigger.md) | The function (`content-transform`), its trigger, the 8th grant (`run.invoker`), the upload script with the `_READY` marker |
+| 6    | [step-6_cleaned-views.md](step-6_cleaned-views.md)                 | 3 cleaned views: `blog_posts`, `articles`, `content`                                                                       |
+| 7    | [step-7_analysis-views.md](step-7_analysis-views.md)               | 4 analysis views, one per question: `content_per_month`, `tag_frequency`, `top_posts_per_category`, `article_text_stats`   |
+| 8    | [step-8_full-dataset.md](step-8_full-dataset.md)                   | The whole chain on the real exports; the results in the README                                                             |
+| 9    | [step-9_real-deployment.md](step-9_real-deployment.md)             | The runbook now; the real deployment                                                                                       |

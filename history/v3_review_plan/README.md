@@ -33,4 +33,4 @@ A review of the architecture plan (`architecture/`) against the story and the ai
 ## Diagrams
 
 - **[diagrams/](diagrams/):** one draw.io file and one PNG per step that has a diagram.
-- **[assets/gcp-intelligence-platform/](../assets/gcp-intelligence-platform/):** the updated overview diagrams.
+- **[assets/gcp-intelligence-platform/](../../assets/gcp-intelligence-platform/):** the updated overview diagrams.

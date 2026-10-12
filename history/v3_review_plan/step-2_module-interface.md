@@ -1,6 +1,6 @@
 # Step 2: module interface
 
-**Planning file:** [02_module-interface.md](../architecture/02_module-interface.md)
+**Planning file:** [02_module-interface.md](../v2_architecture/02_module-interface.md)
 
 **Status:** closed
 

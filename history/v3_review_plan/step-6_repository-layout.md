@@ -1,6 +1,6 @@
 # Step 6: repository layout (which file goes where)
 
-**Planning file:** [06_repository-layout.md](../architecture/06_repository-layout.md)
+**Planning file:** [06_repository-layout.md](../v2_architecture/06_repository-layout.md)
 
 **Status:** closed
 

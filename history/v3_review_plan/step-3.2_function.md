@@ -1,6 +1,6 @@
 # Step 3, part 2: the function
 
-**Planning file:** [03_resource-inventory.md](../architecture/03_resource-inventory.md) (function code, function), with D1.5 to D1.11 and D2.1 to D2.5 from the [brainstorming](../brainstorming/README.md)
+**Planning file:** [03_resource-inventory.md](../v2_architecture/03_resource-inventory.md) (function code, function), with D1.5 to D1.11 and D2.1 to D2.5 from the [brainstorming](../v1_brainstorming/README.md)
 
 **Status:** closed
 

@@ -1,6 +1,6 @@
 # Step 3: resource inventory
 
-> **Reviewed:** [step-3.1_storage.md](../review_plan/step-3.1_storage.md), [step-3.2_function.md](../review_plan/step-3.2_function.md) and [step-3.3_bigquery.md](../review_plan/step-3.3_bigquery.md) correct this step. Where they differ, the review wins.
+> **Reviewed:** [step-3.1_storage.md](../v3_review_plan/step-3.1_storage.md), [step-3.2_function.md](../v3_review_plan/step-3.2_function.md) and [step-3.3_bigquery.md](../v3_review_plan/step-3.3_bigquery.md) correct this step. Where they differ, the review wins.
 
 Decision log for step 3 of [00_roadmap.md](00_roadmap.md). Builds on [01_platform-contract.md](01_platform-contract.md) and [02_module-interface.md](02_module-interface.md).
 

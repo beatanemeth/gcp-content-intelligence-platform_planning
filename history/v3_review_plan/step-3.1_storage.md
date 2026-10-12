@@ -1,6 +1,6 @@
 # Step 3, part 1: storage
 
-**Planning file:** [03_resource-inventory.md](../architecture/03_resource-inventory.md) (storage), with D1.4, D1.7, D1.9, D1.12, D2.5 and D2.6 from the [brainstorming](../brainstorming/README.md)
+**Planning file:** [03_resource-inventory.md](../v2_architecture/03_resource-inventory.md) (storage), with D1.4, D1.7, D1.9, D1.12, D2.5 and D2.6 from the [brainstorming](../v1_brainstorming/README.md)
 
 **Status:** closed
 
@@ -85,7 +85,7 @@ Each shelf has two folders, `blogs/` and `articles/`. When all files of a folder
 | Cleaned   | BigQuery `content_cleaned`   | 3        |
 | Analysis  | BigQuery `content_analysis`  | 3        |
 
-Source: the data glossary in the [brainstorming README](../brainstorming/README.md).
+Source: the data glossary in the [brainstorming README](../v1_brainstorming/README.md).
 
 <br>
 

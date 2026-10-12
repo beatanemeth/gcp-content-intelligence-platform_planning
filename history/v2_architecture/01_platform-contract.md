@@ -1,6 +1,6 @@
 # Step 1: platform contract
 
-> **Reviewed:** [step-1_platform-contract.md](../review_plan/step-1_platform-contract.md) corrects this step. Where they differ, the review wins.
+> **Reviewed:** [step-1_platform-contract.md](../v3_review_plan/step-1_platform-contract.md) corrects this step. Where they differ, the review wins.
 
 Decision log for step 1 of [00_roadmap.md](00_roadmap.md).
 

@@ -1,6 +1,6 @@
 # Step 7: CI (the automatic checks, on the laptop and on GitHub)
 
-**Planning file:** [07_ci.md](../architecture/07_ci.md)
+**Planning file:** [07_ci.md](../v2_architecture/07_ci.md)
 
 **Status:** closed
 

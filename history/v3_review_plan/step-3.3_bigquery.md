@@ -1,6 +1,6 @@
 # Step 3, part 3: BigQuery
 
-**Planning file:** [03_resource-inventory.md](../architecture/03_resource-inventory.md) (BigQuery), with D2.4 and D3.1 to D3.14 from the [brainstorming](../brainstorming/README.md)
+**Planning file:** [03_resource-inventory.md](../v2_architecture/03_resource-inventory.md) (BigQuery), with D2.4 and D3.1 to D3.14 from the [brainstorming](../v1_brainstorming/README.md)
 
 **Status:** closed
 

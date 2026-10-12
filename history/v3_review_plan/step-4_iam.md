@@ -1,6 +1,6 @@
 # Step 4: IAM (who may do what)
 
-**Planning file:** [04_iam.md](../architecture/04_iam.md)
+**Planning file:** [04_iam.md](../v2_architecture/04_iam.md)
 
 **Status:** closed
 

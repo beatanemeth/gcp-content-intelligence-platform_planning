@@ -1,6 +1,6 @@
 # Step 4: IAM
 
-> **Reviewed:** [step-4_iam.md](../review_plan/step-4_iam.md) corrects this step. Where they differ, the review wins.
+> **Reviewed:** [step-4_iam.md](../v3_review_plan/step-4_iam.md) corrects this step. Where they differ, the review wins.
 
 Decision log for step 4 of [00_roadmap.md](00_roadmap.md). Builds on [01_platform-contract.md](01_platform-contract.md) and [03_resource-inventory.md](03_resource-inventory.md).
 

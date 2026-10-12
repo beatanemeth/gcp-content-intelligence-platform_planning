@@ -1,6 +1,6 @@
 # Content pipeline: planning summary
 
-> **Reviewed:** the [plan review](../review_plan/README.md) corrects this plan step by step. Where they differ, `review_plan/` wins.
+> **Reviewed:** the [plan review](../v3_review_plan/README.md) corrects this plan step by step. Where they differ, `review_plan/` wins.
 
 ## The story
 
@@ -23,7 +23,7 @@ This Terraform setup is a new feature in an "existing infrastructure": a standal
 
 **Part B** creates everything that only the **pipeline** uses: buckets, the function and its trigger, BigQuery datasets, tables and views, and its own service accounts with their roles. Both the module and the folder that deploys it (`terraform/deployment/`) belong to Part B.
 
-![Part A (platform) and Part B (feature): what each part owns](../assets/gcp-intelligence-platform/architecture-part-a-part-b.png)
+![Part A (platform) and Part B (feature): what each part owns](../../assets/gcp-intelligence-platform/architecture-part-a-part-b.png)
 
 <br>
 
@@ -44,7 +44,7 @@ This Terraform setup is a new feature in an "existing infrastructure": a standal
 | **Cleaned**   | Dataset `content_cleaned`  | 3 views: snake_case, categories and tags nested | Terraform (SQL)   |
 | **Analysis**  | Dataset `content_analysis` | 6 views, one per question                       | Terraform (SQL)   |
 
-![Part B: data flow from the laptop upload to the analysis views](../assets/gcp-intelligence-platform/architecture-pipeline.png)
+![Part B: data flow from the laptop upload to the analysis views](../../assets/gcp-intelligence-platform/architecture-pipeline.png)
 
 <br>
 
@@ -91,7 +91,7 @@ This Terraform setup is a new feature in an "existing infrastructure": a standal
 
 | File                                                 | Content                                                 |
 | ---------------------------------------------------- | ------------------------------------------------------- |
-| [brainstorming/README.md](../brainstorming/README.md) | Pipeline decisions from the brainstorming (D0 to D7) |
+| [brainstorming/README.md](../v1_brainstorming/README.md) | Pipeline decisions from the brainstorming (D0 to D7) |
 | [00_roadmap.md](00_roadmap.md)                       | Planning steps; root configuration and module explained |
 | [01_platform-contract.md](01_platform-contract.md)   | Step 1: what Part A provides; API list                  |
 | [02_module-interface.md](02_module-interface.md)     | Step 2: inputs, outputs, naming, labels, versions       |
@@ -101,6 +101,6 @@ This Terraform setup is a new feature in an "existing infrastructure": a standal
 | [06_repository-layout.md](06_repository-layout.md)   | Step 6: folder tree of the implementation repository    |
 | [07_ci.md](07_ci.md)                                 | Step 7: GitHub Actions, TFLint                          |
 | [08_build-phases.md](08_build-phases.md)             | Step 8: 10 build phases and the runbook                 |
-| [architecture.drawio](../assets/gcp-intelligence-platform/architecture.drawio) | Editable source of both diagrams (2 pages)              |
+| [architecture.drawio](../../assets/gcp-intelligence-platform/architecture.drawio) | Editable source of both diagrams (2 pages)              |
 
 **Status:** most step decisions are _Delegated_ (chosen by Claude at the maintainer's request). Each becomes _Agreed_ once the maintainer can explain it in their own words.

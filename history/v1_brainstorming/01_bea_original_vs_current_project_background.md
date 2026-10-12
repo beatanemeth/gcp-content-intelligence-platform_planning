@@ -24,7 +24,7 @@ GitHub repo: [Wix Content Intelligence Pipeline](https://github.com/beatanemeth/
 
 - Real data from the Wix website of a non-profit organisation for which I was the administrator at the time.
 
-![Architecture overview](../assets/wix-content-intelligence-pipeline/wix-project.png)
+![Architecture overview](../../assets/wix-content-intelligence-pipeline/wix-project.png)
 
 <br>
 

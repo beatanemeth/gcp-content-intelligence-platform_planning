@@ -1,6 +1,6 @@
 # Step 8: build phases and runbook
 
-> **Reviewed:** [step-8_build-phases.md](../review_plan/step-8_build-phases.md) corrects this step. Where they differ, the review wins.
+> **Reviewed:** [step-8_build-phases.md](../v3_review_plan/step-8_build-phases.md) corrects this step. Where they differ, the review wins.
 
 Decision log for step 8 of [00_roadmap.md](00_roadmap.md). Builds on every earlier step.
 
