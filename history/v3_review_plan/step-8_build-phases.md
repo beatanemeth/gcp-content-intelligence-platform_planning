@@ -1,6 +1,6 @@
 # Step 8: build phases (the order of the work)
 
-**Planning file:** [08_build-phases.md](../architecture/08_build-phases.md)
+**Planning file:** [08_build-phases.md](../v2_architecture/08_build-phases.md)
 
 **Status:** closed
 

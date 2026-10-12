@@ -1,6 +1,6 @@
 # Step 5: dependencies
 
-> **Reviewed:** [step-5_dependencies.md](../review_plan/step-5_dependencies.md) corrects this step. Where they differ, the review wins.
+> **Reviewed:** [step-5_dependencies.md](../v3_review_plan/step-5_dependencies.md) corrects this step. Where they differ, the review wins.
 
 Decision log for step 5 of [00_roadmap.md](00_roadmap.md). Builds on [03_resource-inventory.md](03_resource-inventory.md) and [04_iam.md](04_iam.md).
 

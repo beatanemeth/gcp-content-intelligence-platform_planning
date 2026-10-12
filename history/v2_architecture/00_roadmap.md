@@ -1,8 +1,8 @@
 # Planning roadmap
 
-> **Reviewed:** the [plan review](../review_plan/README.md) corrects this plan step by step. Where they differ, `review_plan/` wins.
+> **Reviewed:** the [plan review](../v3_review_plan/README.md) corrects this plan step by step. Where they differ, `review_plan/` wins.
 
-Step-by-step plan for the final Terraform and GCP setup. Starting point: the brainstorming decisions in [brainstorming/README.md](../brainstorming/README.md).
+Step-by-step plan for the final Terraform and GCP setup. Starting point: the brainstorming decisions in [brainstorming/README.md](../v1_brainstorming/README.md).
 
 **Status values:** _Agreed_ (confirmed by the maintainer), _Delegated_ (chosen by Claude at the maintainer's request).
 
@@ -58,7 +58,7 @@ Each step ends with a decision log in this folder. All 8 logs are written and we
 
 ## Earlier decisions re-decided
 
-Source: [brainstorming/07_claude_cross_cutting_topics.md](../brainstorming/07_claude_cross_cutting_topics.md).
+Source: [brainstorming/07_claude_cross_cutting_topics.md](../v1_brainstorming/07_claude_cross_cutting_topics.md).
 
 | Earlier decision | Topic                                                                         | Now                                                    |
 | ---------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------ |

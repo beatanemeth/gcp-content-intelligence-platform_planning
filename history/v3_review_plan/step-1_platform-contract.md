@@ -1,6 +1,6 @@
 # Step 1: platform contract
 
-**Planning file:** [01_platform-contract.md](../architecture/01_platform-contract.md)
+**Planning file:** [01_platform-contract.md](../v2_architecture/01_platform-contract.md)
 
 **Status:** closed
 

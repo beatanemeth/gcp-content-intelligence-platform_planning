@@ -1,6 +1,6 @@
 # Step 5: dependencies (in which order things are built and removed)
 
-**Planning file:** [05_dependencies.md](../architecture/05_dependencies.md)
+**Planning file:** [05_dependencies.md](../v2_architecture/05_dependencies.md)
 
 **Status:** closed
 
