@@ -1,6 +1,8 @@
 # GCP content intelligence platform: planning
 
-This repository plans a new portfolio project. It takes an earlier local project and redesigns it as a cloud data pipeline on **Google Cloud**, built with **Terraform**.
+This repository plans a new portfolio project. It takes an earlier local project ([Wix Content Intelligence Pipeline](https://github.com/beatanemeth/Wix-Content-Intelligence-Pipeline)) and redesigns it as a cloud data pipeline on **Google Cloud**, built with **Terraform**.
+
+Every implementation detail lives in the [implementation repository](https://github.com/beatanemeth/gcp-content-intelligence-platform_implementation); this repository designs it.
 
 > **Authorship note:** Plan and decisions are mine. Claude Code helped with research and wording.
 
